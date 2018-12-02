@@ -1,6 +1,6 @@
 # Transitioning Result Icon for Vue.js
 
-A scalable result icon (SVG) that transitions the state change, that is the SVG shape change is transitioned as well as the color.
+A scalable result icon (SVG) that transitions the state change, that is the SVG shape change is transitioned as well as the color. Demonstration can be found [here](https://transitioning-result-icon.dexmo-hq.com).
 
 ## Install
 ```sh

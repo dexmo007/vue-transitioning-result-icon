@@ -1,29 +1,9 @@
-# vue-svg-demo
+# Transitioning Result Icon for Vue.js
 
-## Project setup
+## Usage
+```sh
+npm i --save @dexmo/vue-transitioning-result-icon
 ```
-yarn install
+```sh
+yarn add @dexmo/vue-transitioning-result-icon
 ```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

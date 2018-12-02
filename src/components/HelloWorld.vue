@@ -1,44 +1,43 @@
 <template>
   <div class="container">
     <div class="row">
-      <OverlayingRects :error="error"/>
-      <TwelvePoints :error="error"/>
+      <TransitioningResultIcon id="icon" :error="error" success-color="rgba(83, 165, 48, 1)"
+      :duration="500"/>
+      <!-- <TwelvePoints :error="error"/> -->
     </div>
     <button id="toggle-error-btn" @click="onClick">{{buttonText}}</button>
   </div>
 </template>
 <script>
-import OverlayingRects from "./OverlayingRects.vue";
-import TwelvePoints from "./TwelvePoints.vue";
+import { TweenLite } from 'gsap/TweenLite';
+import TransitioningResultIcon from './TransitioningResultIcon.vue';
 
-import { TweenLite } from "gsap/TweenLite";
 
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   components: {
-    OverlayingRects,
-    TwelvePoints
+    TransitioningResultIcon,
   },
   data() {
     return {
       error: false,
-      buttonText: ""
+      buttonText: '',
     };
   },
   created() {
-    this.buttonText = this.error ? "Fix 'em up" : "Sabotage!!";
+    this.buttonText = this.error ? "Fix 'em up" : 'Sabotage!!';
   },
   methods: {
     onClick() {
       this.error = !this.error;
-    }
+    },
   },
   watch: {
     error() {
-      const newText = this.error ? "Fix 'em up" : "Sabotage!!";
-      TweenLite.to("#toggle-error-btn", 1, { text: { value: newText } });
-    }
-  }
+      const newText = this.error ? "Fix 'em up" : 'Sabotage!!';
+      TweenLite.to('#toggle-error-btn', 0.5, { text: { value: newText } });
+    },
+  },
 };
 </script>
 <style scoped>
@@ -57,11 +56,16 @@ export default {
 .row > * {
   margin: 30px;
 }
+#icon {
+  width: 400px;
+  height: 400px;
+}
 button {
   border: none;
   outline: none;
   padding: 25px;
   font-size: 24px;
+  font-family: monospace;
   width: 200px;
 }
 button:hover {

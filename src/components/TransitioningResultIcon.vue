@@ -15,6 +15,7 @@ import AttrPlugin from 'gsap/AttrPlugin';
 import { times, check } from '../icons/OverlayingRects';
 import { generateDomId } from '../util/Utils';
 
+// this is required to ensure that the plugin actually gets loaded
 // eslint-disable-next-line no-unused-vars
 const GsapPlugins = [AttrPlugin];
 

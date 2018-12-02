@@ -60,6 +60,12 @@ export default {
   width: 400px;
   height: 400px;
 }
+@media (max-width: 400px) {
+  #icon {
+    width: calc(100vw - 30px);
+    height: calc(100vw - 30px);
+  }
+}
 button {
   border: none;
   outline: none;

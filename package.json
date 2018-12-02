@@ -1,12 +1,23 @@
 {
   "name": "@dexmo/vue-transitioning-result-icon",
   "version": "0.1.0",
-  "private": true,
-  "main": "dist/transitioning-result-icon.common.js",
+  "author": {
+    "name": "Henrik Drefs",
+    "url": "https://github.com/dexmo007"
+  },
+  "keywords": ["vue","transition","svg","icon"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dexmo007/vue-transitioning-result-icon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dexmo007/vue-transitioning-result-icon/issues"
+  },
+  "homepage": "https://github.com/dexmo007/vue-transitioning-result-icon",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name transitioning-result-icon ./src/components/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -27,8 +38,9 @@
     "vue-template-compiler": "^2.5.17"
   },
   "files": [
-    "dist/*",
     "src/*",
-    "*.js"
+    "*.js",
+    "*.json",
+    "*.vue"
   ]
 }

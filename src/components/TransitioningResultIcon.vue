@@ -32,7 +32,7 @@ function validateColor(value) {
 }
 
 export default {
-  name: 'OverlayingRects',
+  name: 'TransitioningResultIcon',
   props: {
     error: Boolean,
     duration: {

@@ -1,6 +1,8 @@
 {
   "name": "@dexmo/vue-transitioning-result-icon",
+  "description": "A transitioning (color and SVG) result icon (error or success) for Vue.",
   "version": "0.1.0",
+  "main": "src/components/TransitioningResultIcon.vue",
   "author": {
     "name": "Henrik Drefs",
     "url": "https://github.com/dexmo007"

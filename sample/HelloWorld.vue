@@ -1,17 +1,34 @@
 <template>
   <div class="container">
     <div class="row">
-      <TransitioningResultIcon id="icon" :error="error" success-color="rgba(83, 165, 48, 1)"
-      :duration="500"/>
-      <!-- <TwelvePoints :error="error"/> -->
+      <TransitioningResultIcon
+        id="icon"
+        :error="error"
+        :success-color="successColor"
+        :error-color="errorColor"
+        :duration="duration"
+      />
     </div>
     <button id="toggle-error-btn" @click="onClick">{{buttonText}}</button>
+    <div class="config">
+      <label>Success color</label>
+      <div class="color-row">
+        <input v-model="successColor">
+        <div class="color-box" :style="{background: successColor}"></div>
+      </div>
+      <label>Error color</label>
+      <div class="color-row">
+        <input v-model="errorColor">
+        <div class="color-box" :style="{background:errorColor}"></div>
+      </div>
+      <label>Transition duration</label>
+      <input v-model.number="duration">
+    </div>
   </div>
 </template>
 <script>
 import { TweenLite } from 'gsap/TweenLite';
 import TransitioningResultIcon from '../src/components/TransitioningResultIcon.vue';
-
 
 export default {
   name: 'HelloWorld',
@@ -21,6 +38,9 @@ export default {
   data() {
     return {
       error: false,
+      successColor: 'rgba(83, 165, 48, 1)',
+      errorColor: 'red',
+      duration: 500,
       buttonText: '',
     };
   },
@@ -55,6 +75,25 @@ export default {
 }
 .row > * {
   margin: 30px;
+}
+.config {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.config > * {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.color-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.color-box {
+  width: 16px;
+  height: 16px;
 }
 #icon {
   width: 400px;

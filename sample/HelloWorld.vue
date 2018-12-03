@@ -10,7 +10,7 @@
 </template>
 <script>
 import { TweenLite } from 'gsap/TweenLite';
-import TransitioningResultIcon from './TransitioningResultIcon.vue';
+import TransitioningResultIcon from '../src/components/TransitioningResultIcon.vue';
 
 
 export default {

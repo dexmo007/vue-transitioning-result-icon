@@ -1,8 +1,9 @@
 <template>
   <svg viewBox="0 0 400 400">
     <circle :style="{fill: tweenedCSSColor}" cx="200" cy="200" r="200"></circle>
-    <polygon :id="polygon1" :points="points"></polygon>
-    <polygon :id="polygon2" :points="points2"></polygon>
+    <circle fill="white" cx="140" cy="110" r="20"></circle>
+    <circle fill="white" cx="270" cy="110" r="20"></circle>
+    <path :id="pathId" :d="path" stroke="white" stroke-width="10" fill="transparent"/>
   </svg>
 </template>
 
@@ -11,39 +12,37 @@ import Color from 'color-js/color';
 import TWEEN from '@tweenjs/tween.js';
 import { TweenLite } from 'gsap/TweenLite';
 import AttrPlugin from 'gsap/AttrPlugin';
-
-import { times, check } from '../icons/OverlayingRects';
-import { generateDomId } from '../util/Utils';
 import ResultIconProps from './ResultIconProps';
+
+import { generateDomId } from '../util/Utils';
 
 // this is required to ensure that the plugin actually gets loaded
 // eslint-disable-next-line no-unused-vars
 const GsapPlugins = [AttrPlugin];
 
-const timesPoints = times(400, 40);
-const checkPoints = check(400, 40, -20);
+const smilePath = 'M100 230 c0 100, 200 100, 200 0';
+const frownPath = 'M100 310 c0 -100, 200 -100, 200 0';
 
 export default {
   name: 'TransitioningResultIcon',
   props: ResultIconProps,
   data() {
     return {
-      polygon1: generateDomId(),
-      polygon2: generateDomId(),
+      pathId: generateDomId(),
       tweenedColor: {},
-      points: null,
-      points2: null,
+      path: null,
+      smilePath,
+      frownPath,
     };
   },
   created() {
-    const [color, points, points2] = this.update();
+    const [color, path] = this.update();
     this.tweenedColor = Object.assign({}, color);
-    this.points = points;
-    this.points2 = points2;
+    this.path = path;
   },
   watch: {
     error() {
-      const [color, points, points2] = this.update();
+      const [color, path] = this.update();
       function animate() {
         if (TWEEN.update()) {
           requestAnimationFrame(animate);
@@ -51,11 +50,8 @@ export default {
       }
       new TWEEN.Tween(this.tweenedColor).to(color, this.duration).start();
       animate();
-      TweenLite.to(`#${this.polygon1}`, this.duration / 1000, {
-        attr: { points },
-      });
-      TweenLite.to(`#${this.polygon2}`, this.duration / 1000, {
-        attr: { points: points2 },
+      TweenLite.to(`#${this.pathId}`, this.duration / 1000, {
+        attr: { d: path },
       });
     },
   },
@@ -69,9 +65,8 @@ export default {
       const color = Color(
         this.error ? this.errorColor : this.successColor,
       ).toRGB();
-      const points = this.error ? timesPoints[0] : checkPoints[0];
-      const points2 = this.error ? timesPoints[1] : checkPoints[1];
-      return [color, points, points2];
+      const path = this.error ? frownPath : smilePath;
+      return [color, path];
     },
   },
 };
@@ -82,8 +77,5 @@ export default {
 svg {
   display: block;
   width: 40px;
-}
-polygon {
-  fill: white;
 }
 </style>

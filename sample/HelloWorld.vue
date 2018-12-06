@@ -1,7 +1,20 @@
 <template>
   <div class="container">
+    <select v-model="selected">
+      <option value="CheckTimes">Check / Times</option>
+      <option value="SmileFrown">Smile / Frown</option>
+    </select>
     <div class="row">
+      <TransitioningSmileyIcon
+        v-if="selected === 'SmileFrown'"
+        id="icon"
+        :error="error"
+        :success-color="successColor"
+        :error-color="errorColor"
+        :duration="duration"
+      />
       <TransitioningResultIcon
+        v-else-if="selected === 'CheckTimes'"
         id="icon"
         :error="error"
         :success-color="successColor"
@@ -28,11 +41,12 @@
 </template>
 <script>
 import { TweenLite } from 'gsap/TweenLite';
-import TransitioningResultIcon from '../src/components/TransitioningResultIcon.vue';
+import { TransitioningSmileyIcon, TransitioningResultIcon } from '../src/main';
 
 export default {
   name: 'HelloWorld',
   components: {
+    TransitioningSmileyIcon,
     TransitioningResultIcon,
   },
   data() {
@@ -42,6 +56,7 @@ export default {
       errorColor: 'red',
       duration: 500,
       buttonText: '',
+      selected: 'CheckTimes',
     };
   },
   created() {
@@ -67,7 +82,7 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-.container > * {
+.container > *:not(select) {
   margin: 20px;
 }
 .row {
@@ -75,6 +90,24 @@ export default {
 }
 .row > * {
   margin: 30px;
+}
+select {
+  margin: 10px;
+  font-size: 16px;
+  padding: 7px;
+  outline: none;
+  background-color: #e4e4e4;
+  border: none;
+}
+select > option {
+  padding: 10px;
+  outline: none;
+  border: none;
+  background-color: #e4e4e4;
+  pointer-events: none;
+}
+select > option:hover {
+  background-color: #d3d3d3;
 }
 .config {
   display: grid;
@@ -112,6 +145,8 @@ button {
   font-size: 24px;
   font-family: monospace;
   width: 200px;
+  background-color: #e4e4e4;
+  transition: background-color 150ms ease-in-out;
 }
 button:hover {
   background-color: #d3d3d3;

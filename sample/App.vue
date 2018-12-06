@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <GitHubCorner href="https://github.com/dexmo007/vue-transitioning-result-icon"/>
     <h1>Transitioning Result Icon</h1>
     <HelloWorld/>
   </div>
@@ -7,11 +8,13 @@
 
 <script>
 import HelloWorld from './HelloWorld.vue';
+import GitHubCorner from './GitHubCorner.vue';
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
+    GitHubCorner,
   },
 };
 </script>

@@ -25,3 +25,5 @@ import TransitioningResultIcon from '@dexmo/vue-transitioning-result-icon';
 | duration     | Number *(default: 500)*     | Duration of the transition in milliseconds |
 | successColor | String *(default: 'green')* | CSS Color string for the success state     |
 | errorColor   | String *(default: 'red')*   | CSS Color string for the error state       |
+
+The size of the icon can be styled via CSS directly (on the underlying SVG).
